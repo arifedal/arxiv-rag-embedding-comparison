@@ -30,6 +30,8 @@ Stratifying by primary category matters: ArXiv is heavily skewed toward physics,
 
 Each record's embedding text is the title and abstract concatenated. Outputs are written as CSV, pickle and a JSON metadata summary, plus a distribution figure.
 
+![Corpus distribution](results/data_distribution.png)
+
 ## Phase 2 — Embedding model comparison
 
 Three models were embedded over the full 500K corpus and indexed with **FAISS IVF**, which reduces search from linear to roughly √n scans.
@@ -41,6 +43,8 @@ Three models were embedded over the full 500K corpus and indexed with **FAISS IV
 | BGE-base-en-v1.5 | 768 | 2,258 s | 221 texts/s | 1.000 |
 
 Query-time search speed on the BGE index: **1,256 queries/sec**.
+
+![Embedding model comparison](results/model_comparison_visualization.png)
 
 **Reading the result honestly:** self-retrieval accuracy (can a document be found by its own embedding?) saturates at 1.000 for all three, so it does not discriminate between them — it confirms the indexes are sound but cannot rank quality. What the benchmark *does* establish is cost: MiniLM produces embeddings 5.6× faster and at half the storage (768 MB vs 1,536 MB per index). Ranking retrieval *quality* would need a labelled relevance set, which this phase did not have.
 
@@ -79,6 +83,8 @@ Google Colab Pro, NVIDIA A100-SXM4-40GB.
 ├── phase3_llm_comparison.py        # RAG retrieval + level-aware generation
 ├── docs/
 │   └── project_documentation.md
+├── results/                        # figures produced by the pipeline
+├── .gitignore
 └── requirements.txt
 ```
 
@@ -101,6 +107,10 @@ Each phase writes to disk before the next begins, so an interrupted session can 
 - A LoRA fine-tuning branch on `bert-base-uncased` was attempted as an additional embedding baseline but is not included here — it did not reach a working state.
 - Single generator model; the original design compared four LLMs but was scaled back to fit the available compute budget.
 
+## Contributions
+
+<!-- Fill this in before publishing — be specific about which phases you owned. -->
+This was a team project. **[Your name]** was responsible for _[e.g. Phase 1 data pipeline and Phase 2 embedding benchmark]_.
 
 ## Tech stack
 
