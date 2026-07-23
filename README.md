@@ -81,8 +81,6 @@ Google Colab Pro, NVIDIA A100-SXM4-40GB.
 ├── phase1_data_preparation.py      # streaming load, cleaning, stratified sampling
 ├── phase2_embedding_comparison.py  # embedding + FAISS indexing + benchmark
 ├── phase3_llm_comparison.py        # RAG retrieval + level-aware generation
-├── docs/
-│   └── project_documentation.md
 ├── results/                        # figures produced by the pipeline
 ├── .gitignore
 └── requirements.txt
@@ -107,10 +105,6 @@ Each phase writes to disk before the next begins, so an interrupted session can 
 - A LoRA fine-tuning branch on `bert-base-uncased` was attempted as an additional embedding baseline but is not included here — it did not reach a working state.
 - Single generator model; the original design compared four LLMs but was scaled back to fit the available compute budget.
 
-## Contributions
-
-<!-- Fill this in before publishing — be specific about which phases you owned. -->
-This was a team project. **[Your name]** was responsible for _[e.g. Phase 1 data pipeline and Phase 2 embedding benchmark]_.
 
 ## Tech stack
 
