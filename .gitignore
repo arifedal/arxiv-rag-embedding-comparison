@@ -1,0 +1,18 @@
+# Secrets — never commit
+.env
+*.key
+secrets.json
+
+# Data & model artifacts
+*.csv
+*.pkl
+*.npy
+*.index
+!**/results/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+.venv/
